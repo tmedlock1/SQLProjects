@@ -1,0 +1,27 @@
+--create a store invenory database
+
+CREATE TABLE my_store (product_id INTEGER PRIMARY KEY, item TEXT, price INTEGER, quantity_sold INTEGER, current_quantity INTEGEr);
+
+INSERT INTO my_store VALUES (1, "shirt", 5, 10, 15);
+INSERT INTO my_store VALUES (2, 'pants', 17, 23, 9);
+INSERT INTO my_store VALUES (3, 'belt', 1, 2, 6);
+INSERT INTO my_store VALUES (4, 'hat', 5, 14, 9);
+INSERT INTO my_store VALUES (5, 'purse', 35, 9, 6);
+INSERT INTO my_store VALUES (6, 'gum', 2, 45, 2);
+INSERT INTO my_store VALUES (7, 'candy', 4, 2, 19);
+INSERT INTO my_store VALUES (8, 'flowers', 18, 3, 4);
+INSERT INTO my_store VALUES (9, 'basket', 23, 9, 4);
+INSERT INTO my_store VALUES (10, 'cup', 12, 17, 45);
+INSERT INTO my_store VALUES (11, 'soda', 1, 24, 2);
+INSERT INTO my_store VALUES (12, 'pillow', 34, 5, 8);
+INSERT INTO my_store VALUES (13, 'chair', 108, 4, 9);
+INSERT INTO my_store VALUES (14, 'glasses', 16, 3, 19);
+INSERT INTO my_store VALUES (15, 'candle', 10, 4, 1);
+SELECT * FROM my_store;
+
+
+--display items from the database with a price less than $20
+SELECT * FROM my_store WHERE price <20;
+
+--put items in order by price
+SELECT * FROM my_store ORDER BY price
