@@ -1,29 +1,5 @@
--- Example query (PostgreSQL)
---SELECT * FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" LIMIT 5
-
---SELECT
-    --people.show_id,
-    --people.director,
-    --titles.title,
-    --titles.type
---FROM
---"CharlotteChaze/BreakIntoTech"."netflix_people" people
---LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
---ON people.show_id=titles.show_id
-
---SELECT COUNT(*) 
---FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
---WHERE type='movie'
-
-
---SELECT * FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" ORDER BY title ASC;/
-
-
-
---select max(date(date_added))
---FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
-
-
+--Joining two tables with a common column
+SELECT * FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" LIMIT 5
 
 SELECT
     people.show_id,
@@ -33,7 +9,39 @@ SELECT
 FROM
 "CharlotteChaze/BreakIntoTech"."netflix_people" people
 LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
-ON people.show_id=titles.show_id; WHERE title='brightstar';
+ON people.show_id=titles.show_id
+
+--Count all of the movies in the database
+SELECT COUNT(*) 
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type='movie'
+
+
+--Place the items in the database in alphabetical order based on title
+SELECT * FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" ORDER BY title ASC;/
+
+
+--What is the most recent title added to the database?
+select max(date(date_added))
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+
+
+--What is Bright Star a Movie or TV Show
+select 
+type
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" people
+ON titles.show_id=people.show_id
+where titles.title='Bright Star'
+
+--What was the first title added to the database? 
+select 
+title, date_added
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" people
+ON titles.show_id=people.show_id
+ORDER BY date_added ASC
 
 
 -- Tips:
