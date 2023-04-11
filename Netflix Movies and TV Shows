@@ -1,0 +1,45 @@
+-- Example query (PostgreSQL)
+--SELECT * FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" LIMIT 5
+
+--SELECT
+    --people.show_id,
+    --people.director,
+    --titles.title,
+    --titles.type
+--FROM
+--"CharlotteChaze/BreakIntoTech"."netflix_people" people
+--LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+--ON people.show_id=titles.show_id
+
+--SELECT COUNT(*) 
+--FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+--WHERE type='movie'
+
+
+--SELECT * FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" ORDER BY title ASC;/
+
+
+
+--select max(date(date_added))
+--FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+
+
+SELECT
+    people.show_id,
+    people.director,
+    titles.title,
+    titles.type
+FROM
+"CharlotteChaze/BreakIntoTech"."netflix_people" people
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+ON people.show_id=titles.show_id; WHERE title='brightstar';
+
+
+-- Tips:
+-- (*) Table names containing punctuation, capitalization, or spaces should be
+--     quoted, e.g. "Test Data.csv".
+-- (*) Add more data by using the Upload Data button.
+-- (*) Create additional schemas for namespacing your tables, e.g. "CREATE SCHEMA my_schema;".
+-- (*) When querying tables created outside of the public (default) schema,
+--     be sure to specify the desired schema, e.g. "SELECT * FROM my_schema."my data.csv";".
