@@ -1,0 +1,67 @@
+--In this project I am using SQL to query several aspects of multiple tables.
+
+--Show Customers who are not in the US and group them by Country
+SELECT customerID, FirstName, LastName, country
+FROM chinook.customers
+WHERE country <>'USA'
+GROUP BY country
+
+--Show only the customers from Brazil
+SELECT customerID, FirstName, LastName, country
+FROM chinook.customers
+WHERE country ='Brazil'
+
+--Find the Invoices of customers who are from Brazil
+SELECT CUST.customerID, cust.FirstName, cust.LastName, inv.BillingCountry, inv.InvoiceID, inv.InvoiceDate
+FROM chinook.invoices as inv
+LEFT JOIN chinook.customers as cust
+ON inv.customerid = cust.customerid
+WHERE inv.billingcountry ='Brazil'
+
+--Show employees who are Sales Agents
+SELECT FirstName, LastName, title
+FROM chinook.employees
+WHERE title like '%Agent%'
+
+--Find a unique/distinct list of billing countries from the Invoice table
+SELECT billingcountry as 'Billing Country'
+FROM chinook.invoices
+GROUP BY billingcountry 
+
+--Provide a query that shows the invoices associated with each sales agent. 
+SELECT emp.LastName, emp.Firstname, inv.InvoiceId
+FROM chinook.Employees emp 
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId
+
+--Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers
+SELECT emp.LastName, emp.Firstname, cust.FirstName, cust.LastName, cust.Country, inv.total
+FROM chinook.employees emp 
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+How many Invoices were there in 2009?
+SELECT count(*)
+FROM chinook.invoices
+WHERE invoicedate BETWEEN '2009-01-01' AND '2009-12-31'
+
+--What are the total sales for 2009?
+SELECT total, invoicedate
+FROM chinook.invoices
+WHERE invoicedate BETWEEN '2009-01-01' AND '2009-12-31'
+
+--Write a query that includes the purchased track name with each invoice line ID.
+SELECT t.Name, i.InvoiceLineId
+FROM chinook.Invoice_items i
+JOIN chinook.Tracks t 
+ON i.TrackId = t.TrackId;
+
+--Write a query that includes the purchased track name AND artist name with each invoice line ID
+SELECT ar.name as Artist, t.Name as Track, i.InvoiceLineId
+FROM chinook.Invoice_items i
+LEFT JOIN chinook.tracks t 
+ON i.TrackID=t.TrackID
+INNER JOIN chinook.albums a
+ON a.AlbumID=t.AlbumID
+LEFT JOIN chinook.artists ar
+ON ar.ArtistID=a.ArtistID;
