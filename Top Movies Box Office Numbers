@@ -1,3 +1,5 @@
+--In this project, I created a table and ran several queries on the data regarding Top Box Office Movies.
+
 /* Source: http://www.boxofficemojo.com/alltime/world/ */
 CREATE TABLE topmovies(
    Rank        INTEGER,
